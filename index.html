@@ -1,0 +1,730 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mitali Brahmankar - Portfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #0f0f1e;
+            overflow-x: hidden;
+        }
+
+        .animated-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: linear-gradient(45deg, #667eea, #764ba2, #f093fb, #4facfe);
+            background-size: 400% 400%;
+            animation: gradientShift 15s ease infinite;
+        }
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+
+        .particle {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.5);
+            border-radius: 50%;
+            animation: float 20s infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) translateX(0); opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { transform: translateY(-100vh) translateX(100px); opacity: 0; }
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        header {
+            text-align: center;
+            padding: 80px 20px 60px;
+            color: white;
+            animation: fadeInDown 1s ease-out;
+        }
+
+        .profile-section {
+            position: relative;
+            margin-bottom: 30px;
+        }
+
+        .profile-photo-container {
+            position: relative;
+            width: 200px;
+            height: 200px;
+            margin: 0 auto 25px;
+        }
+
+        .profile-photo {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            border: 5px solid white;
+            box-shadow: 0 0 40px rgba(255, 255, 255, 0.3),
+                        0 0 80px rgba(102, 126, 234, 0.5);
+            object-fit: cover;
+            background: white;
+            animation: glowPulse 3s ease-in-out infinite;
+            position: relative;
+            z-index: 2;
+        }
+
+        @keyframes glowPulse {
+            0%, 100% { box-shadow: 0 0 40px rgba(255, 255, 255, 0.3), 0 0 80px rgba(102, 126, 234, 0.5); }
+            50% { box-shadow: 0 0 60px rgba(255, 255, 255, 0.5), 0 0 120px rgba(102, 126, 234, 0.8); }
+        }
+
+        .profile-ring {
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 230px;
+            height: 230px;
+            border: 3px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            animation: rotate 10s linear infinite;
+        }
+
+        @keyframes rotate {
+            from { transform: translateX(-50%) rotate(0deg); }
+            to { transform: translateX(-50%) rotate(360deg); }
+        }
+
+        header h1 {
+            font-size: 3.5em;
+            margin-bottom: 15px;
+            text-shadow: 0 0 20px rgba(0,0,0,0.3);
+            animation: textGlow 2s ease-in-out infinite;
+            font-weight: 700;
+            letter-spacing: 2px;
+        }
+
+        @keyframes textGlow {
+            0%, 100% { text-shadow: 0 0 20px rgba(255,255,255,0.5); }
+            50% { text-shadow: 0 0 30px rgba(255,255,255,0.8), 0 0 40px rgba(102, 126, 234, 0.6); }
+        }
+
+        header p {
+            font-size: 1.4em;
+            opacity: 0.95;
+            margin-bottom: 8px;
+            animation: fadeIn 1.5s ease-out;
+        }
+
+        .tagline {
+            font-size: 1.2em;
+            opacity: 0.9;
+            font-style: italic;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 10px 20px;
+            border-radius: 25px;
+            display: inline-block;
+            margin-top: 10px;
+            backdrop-filter: blur(10px);
+        }
+
+        .achievement-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #f093fb, #f5576c);
+            color: white;
+            padding: 8px 20px;
+            border-radius: 20px;
+            margin-top: 15px;
+            font-weight: bold;
+            animation: bounceIn 1s ease-out;
+            box-shadow: 0 5px 15px rgba(245, 87, 108, 0.4);
+        }
+
+        @keyframes bounceIn {
+            0% { transform: scale(0); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+
+        .section {
+            background: rgba(255, 255, 255, 0.95);
+            margin: 30px 0;
+            padding: 45px;
+            border-radius: 20px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+            animation: slideUp 0.8s ease-out;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            transition: transform 0.3s ease;
+        }
+
+        .section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.4);
+        }
+
+        .section h2 {
+            color: #667eea;
+            margin-bottom: 30px;
+            font-size: 2.5em;
+            border-bottom: 4px solid;
+            border-image: linear-gradient(90deg, #667eea, #764ba2, #f093fb) 1;
+            padding-bottom: 15px;
+            position: relative;
+            animation: slideInLeft 0.8s ease-out;
+        }
+
+        .section h2::before {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+            animation: expandWidth 1s ease-out;
+        }
+
+        @keyframes expandWidth {
+            from { width: 0; }
+            to { width: 100px; }
+        }
+
+        .about-text p {
+            margin-bottom: 15px;
+            font-size: 1.1em;
+            line-height: 1.8;
+            animation: fadeIn 1s ease-out;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 25px;
+            margin-top: 25px;
+        }
+
+        .skill-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 30px;
+            border-radius: 15px;
+            color: white;
+            text-align: center;
+            transition: all 0.4s ease;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .skill-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: left 0.5s;
+        }
+
+        .skill-card:hover::before {
+            left: 100%;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-15px) scale(1.05);
+            box-shadow: 0 20px 40px rgba(102, 126, 234, 0.6);
+        }
+
+        .skill-card h3 {
+            margin-bottom: 12px;
+            font-size: 1.4em;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 30px;
+            margin-top: 25px;
+        }
+
+        .project-card {
+            background: linear-gradient(135deg, #ffffff 0%, #f8f9ff 100%);
+            border: 2px solid transparent;
+            padding: 30px;
+            border-radius: 15px;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, #667eea, #764ba2, #f093fb);
+            transform: scaleX(0);
+            transition: transform 0.4s ease;
+        }
+
+        .project-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .project-card:hover {
+            border-color: #667eea;
+            box-shadow: 0 15px 35px rgba(102, 126, 234, 0.4);
+            transform: translateY(-8px);
+        }
+
+        .project-card h3 {
+            color: #667eea;
+            margin-bottom: 10px;
+            font-size: 1.4em;
+        }
+
+        .project-duration {
+            color: #666;
+            font-size: 0.95em;
+            margin-bottom: 12px;
+            font-style: italic;
+        }
+
+        .project-tech {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            display: inline-block;
+            margin-top: 12px;
+            box-shadow: 0 4px 10px rgba(102, 126, 234, 0.3);
+        }
+
+        .cert-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-top: 25px;
+        }
+
+        .cert-card {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            padding: 30px;
+            border-radius: 15px;
+            color: white;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cert-card::after {
+            content: '🏆';
+            position: absolute;
+            top: -20px;
+            right: -20px;
+            font-size: 100px;
+            opacity: 0.1;
+        }
+
+        .cert-card:hover {
+            transform: scale(1.08) rotate(2deg);
+            box-shadow: 0 15px 35px rgba(245, 87, 108, 0.5);
+        }
+
+        .cert-card h3 {
+            font-size: 1.3em;
+            margin-bottom: 10px;
+        }
+
+        .internship-box {
+            background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+            padding: 40px;
+            border-radius: 20px;
+            color: #333;
+            margin-top: 25px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .internship-box::before {
+            content: '💼';
+            position: absolute;
+            top: -30px;
+            right: -30px;
+            font-size: 150px;
+            opacity: 0.1;
+        }
+
+        .internship-box h3 {
+            font-size: 1.8em;
+            margin-bottom: 15px;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+            margin-top: 25px;
+        }
+
+        .contact-item {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 18px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            transition: all 0.4s ease;
+            display: inline-block;
+            font-size: 1.1em;
+            font-weight: 500;
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        .contact-item:hover {
+            transform: translateY(-5px) scale(1.1);
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.6);
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px;
+            color: white;
+            margin-top: 60px;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2.2em;
+            }
+
+            .section {
+                padding: 30px;
+            }
+
+            .profile-photo-container {
+                width: 160px;
+                height: 160px;
+            }
+
+            .profile-photo {
+                width: 160px;
+                height: 160px;
+            }
+
+            .profile-ring {
+                width: 190px;
+                height: 190px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="animated-bg"></div>
+    
+    <div class="particles" id="particles"></div>
+
+    <header>
+        <div class="profile-section">
+            <div class="profile-photo-container">
+                <div class="profile-ring"></div>
+                <img src="profile.jpg" alt="Mitali Brahmankar" class="profile-photo">
+            </div>
+        </div>
+        <h1>✨ Mitali Brahmankar ✨</h1>
+        <p>Electronics & Telecommunication Engineering Student</p>
+        <p class="tagline">🔬 Embedded Systems | 🌐 IoT | ⚡ FPGA | 🎯 Control Systems Enthusiast</p>
+        <div class="achievement-badge">🏆 INNOVISION 2025 Winner</div>
+    </header>
+
+    <div class="container">
+        <section class="section">
+            <h2>👩‍💻 About Me</h2>
+            <div class="about-text">
+                <p>Hello! I'm <strong>Mitali Brahmankar</strong>, a passionate Electronics & Telecommunication Engineering student from <strong>PCCOE, Pune</strong>. I have a strong interest in embedded systems, IoT, FPGA design, and control systems.</p>
+                <p>With hands-on experience in <strong>Arduino</strong>, <strong>MATLAB Simulink</strong>, <strong>Verilog</strong>, and various microcontrollers, I enjoy building innovative projects that solve real-world problems. I have completed internships in <strong>VLSI design</strong> and worked on multiple technical projects ranging from smart IoT devices to FPGA-based systems.</p>
+                <p>I'm a <strong>winner at INNOVISION 2025 (Techathlon)</strong> organized by JSPM Group of Institutes, demonstrating my commitment to innovation and technology. I constantly strive to learn new technologies and apply them to create impactful solutions.</p>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>💻 Technical Skills</h2>
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <h3>💻 Programming</h3>
+                    <p>C, C++, Verilog, VHDL</p>
+                </div>
+                <div class="skill-card">
+                    <h3>🔧 Hardware</h3>
+                    <p>Arduino, ESP32, FPGA</p>
+                </div>
+                <div class="skill-card">
+                    <h3>📊 Tools</h3>
+                    <p>MATLAB Simulink, R</p>
+                </div>
+                <div class="skill-card">
+                    <h3>⚡ Embedded Systems</h3>
+                    <p>IoT, Microcontrollers</p>
+                </div>
+                <div class="skill-card">
+                    <h3>🎯 Control Systems</h3>
+                    <p>Motor Control, FSM Design</p>
+                </div>
+                <div class="skill-card">
+                    <h3>🔍 Image Processing</h3>
+                    <p>MATLAB, Computer Vision</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>🏢 Internship Experience</h2>
+            <div class="internship-box">
+                <h3>EdiGlobe - VLSI Internship</h3>
+                <p><strong>Duration:</strong> June 2025 - July 2025</p>
+                <p><strong>Department:</strong> Very Large Scale Integration (VLSI)</p>
+                <p><strong>Skills Gained:</strong> VHDL, Verilog, FPGA design, Digital circuit implementation</p>
+                <p style="margin-top: 12px;">Worked on digital design projects and gained hands-on experience with hardware description languages. Demonstrated strong problem-solving abilities and excellent communication skills throughout the internship.</p>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>🚀 Academic Projects</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <h3>🧪 AquaVeritas: Smart Water Bottle</h3>
+                    <p class="project-duration">January 2025 – March 2025</p>
+                    <p>IoT-enabled water bottle with TDS sensors for water quality detection, sterilization feature, and OLED ad-display system using Arduino Nano.</p>
+                    <span class="project-tech">Arduino | IoT | TDS Sensor</span>
+                </div>
+
+                <div class="project-card">
+                    <h3>🚦 Four-Way Traffic Control System</h3>
+                    <p class="project-duration">April 2025</p>
+                    <p>Intelligent traffic management using MATLAB Simulink with image processing and optical flow for vehicle counting and adaptive signal timing.</p>
+                    <span class="project-tech">MATLAB | Image Processing</span>
+                </div>
+
+                <div class="project-card">
+                    <h3>🤖 Bluetooth Controlled Robot Car</h3>
+                    <p class="project-duration">April 2025</p>
+                    <p>Mobile robot with wireless control via Bluetooth using HC-05 module, L298N motor driver, and Arduino Uno.</p>
+                    <span class="project-tech">Arduino | Bluetooth | Embedded</span>
+                </div>
+
+                <div class="project-card">
+                    <h3>🌊 Ultrasonic Distance Sensor (FPGA)</h3>
+                    <p class="project-duration">October 2025</p>
+                    <p>FPGA-based HC-SR04 ultrasonic sensor interface using FSM design for precise distance measurement on Nexys A7-100T board.</p>
+                    <span class="project-tech">Verilog | FPGA | FSM</span>
+                </div>
+
+                <div class="project-card">
+                    <h3>⚡ Piezoelectric Street Lighting</h3>
+                    <p class="project-duration">October 2025</p>
+                    <p>Sustainable energy harvesting system using piezoelectric tiles to power smart street lights with automatic control sensors.</p>
+                    <span class="project-tech">IoT | Renewable Energy</span>
+                </div>
+
+                <div class="project-card">
+                    <h3>✋ Sign Language Detection System</h3>
+                    <p class="project-duration">October 2025</p>
+                    <p>MATLAB-based gesture recognition system using image processing to convert sign language into text for accessibility.</p>
+                    <span class="project-tech">MATLAB | Computer Vision</span>
+                </div>
+
+                <div class="project-card">
+                    <h3>🏥 Hospital Management System</h3>
+                    <p class="project-duration">April 2025</p>
+                    <p>Patient record management system in C with file handling, appointment scheduling, and admin controls.</p>
+                    <span class="project-tech">C Programming | Data Structures</span>
+                </div>
+
+                <div class="project-card">
+                    <h3>💬 Chat App with Undo Feature</h3>
+                    <p class="project-duration">October 2025</p>
+                    <p>Text-based chat simulation demonstrating linked lists and stack implementation for message management.</p>
+                    <span class="project-tech">C++ | Data Structures</span>
+                </div>
+
+                <div class="project-card">
+                    <h3>📊 Netflix Data Analysis in R</h3>
+                    <p class="project-duration">April 2025</p>
+                    <p>Statistical analysis of Netflix content using R with visualizations for genre distribution and trends.</p>
+                    <span class="project-tech">R | Data Analysis</span>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>🏆 Certifications & Achievements</h2>
+            <div class="cert-grid">
+                <div class="cert-card">
+                    <h3>🥈 INNOVISION 2025 Winner</h3>
+                    <p><strong>1st Runner-up at Techathlon</strong></p>
+                    <p>JSPM Group of Institutes</p>
+                    <p style="margin-top: 8px;"><small>National Level Techno-Social Symposium</small></p>
+                    <p><small>February 2025</small></p>
+                </div>
+
+                <div class="cert-card">
+                    <h3>📜 Simulink Fundamentals</h3>
+                    <p><strong>MathWorks Training Services</strong></p>
+                    <p>100% Course Completion</p>
+                    <p style="margin-top: 8px;"><small>October 2025</small></p>
+                </div>
+
+                <div class="cert-card">
+                    <h3>📜 Introduction to Motor Control</h3>
+                    <p><strong>MathWorks Training Services</strong></p>
+                    <p>100% Course Completion</p>
+                    <p style="margin-top: 8px;"><small>October 2025</small></p>
+                </div>
+
+                <div class="cert-card">
+                    <h3>🏢 VLSI Internship Certificate</h3>
+                    <p><strong>EdiGlobe</strong></p>
+                    <p>Very Large Scale Integration</p>
+                    <p style="margin-top: 8px;"><small>June - July 2025</small></p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>📧 Contact Me</h2>
+            <div class="contact-info">
+                <a href="mailto:mitali.brahmankar23@pccoepune.org" class="contact-item">📧 College Email</a>
+                <a href="mailto:mitalibrahmankar27@gmail.com" class="contact-item">📧 Personal Email</a>
+                <a href="https://github.com/mitalibrahmankar" class="contact-item" target="_blank">💻 GitHub</a>
+                <a href="https://linkedin.com/in/mitalibrahmankar" class="contact-item" target="_blank">💼 LinkedIn</a>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Mitali Brahmankar | Electronics & Telecommunication Engineering</p>
+        <p>PCCOE, Pune | Hosted on GitHub Pages</p>
+        <p style="margin-top: 10px; opacity: 0.8;">Cloud Computing Project - Designed with ❤️</p>
+    </footer>
+
+    <script>
+        // Create floating particles
+        const particlesContainer = document.getElementById('particles');
+        for (let i = 0; i < 50; i++) {
+            const particle = document.createElement('div');
+            particle.className = 'particle';
+            particle.style.width = Math.random() * 5 + 2 + 'px';
+            particle.style.height = particle.style.width;
+            particle.style.left = Math.random() * 100 + '%';
+            particle.style.animationDuration = Math.random() * 10 + 15 + 's';
+            particle.style.animationDelay = Math.random() * 5 + 's';
+            particlesContainer.appendChild(particle);
+        }
+
+        // Smooth scroll animation
+        document.addEventListener('DOMContentLoaded', function() {
+            const cards = document.querySelectorAll('.skill-card, .project-card, .cert-card');
+            
+            cards.forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    this.style.cursor = 'pointer';
+                });
+            });
+
+            const sections = document.querySelectorAll('.section');
+            
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -100px 0px'
+            };
+
+            const observer = new IntersectionObserver(function(entries) {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, observerOptions);
+
+            sections.forEach(section => {
+                observer.observe(section);
+            });
+        });
+    </script>
+</body>
+</html>
