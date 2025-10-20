@@ -277,11 +277,8 @@
             width: 380px;
             height: 480px;
             border-radius: 20px;
-            background: linear-gradient(135deg, #00d4ff, #ff00e5);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 120px;
+            object-fit: cover;
+            display: block;
             box-shadow: 0 20px 60px rgba(0, 212, 255, 0.4);
         }
 
@@ -835,6 +832,211 @@
             box-shadow: 0 10px 25px rgba(0, 212, 255, 0.6);
         }
 
+        /* Contact Form Styles */
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr;
+            gap: 40px;
+            margin-top: 30px;
+        }
+
+        .contact-form-wrapper {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(10px);
+            padding: 40px;
+            border-radius: 20px;
+            border: 2px solid rgba(0, 212, 255, 0.3);
+        }
+
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .form-group label {
+            color: #00d4ff;
+            font-weight: 600;
+            font-size: 1.05em;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            background: rgba(255, 255, 255, 0.05);
+            border: 2px solid rgba(0, 212, 255, 0.3);
+            border-radius: 12px;
+            padding: 15px;
+            color: #e0e0e0;
+            font-size: 1em;
+            font-family: inherit;
+            transition: all 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #00d4ff;
+            background: rgba(0, 212, 255, 0.1);
+            box-shadow: 0 0 20px rgba(0, 212, 255, 0.3);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .form-group input::placeholder,
+        .form-group textarea::placeholder {
+            color: #666;
+        }
+
+        .form-group select {
+            cursor: pointer;
+        }
+
+        .submit-btn {
+            background: linear-gradient(135deg, #00d4ff, #ff00e5);
+            color: white;
+            border: none;
+            padding: 18px 40px;
+            border-radius: 50px;
+            font-size: 1.2em;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            box-shadow: 0 10px 30px rgba(0, 212, 255, 0.4);
+            margin-top: 10px;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 212, 255, 0.6);
+        }
+
+        .submit-btn:active {
+            transform: translateY(-2px);
+        }
+
+        .btn-icon {
+            font-size: 1.3em;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-5px); }
+        }
+
+        /* Success Message */
+        .form-success {
+            display: none;
+            text-align: center;
+            padding: 40px;
+            background: rgba(0, 255, 136, 0.1);
+            border: 2px solid rgba(0, 255, 136, 0.3);
+            border-radius: 20px;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .form-success.show {
+            display: block;
+        }
+
+        .success-icon {
+            font-size: 4em;
+            margin-bottom: 20px;
+            animation: scaleIn 0.5s ease;
+        }
+
+        @keyframes scaleIn {
+            from { transform: scale(0); }
+            to { transform: scale(1); }
+        }
+
+        .form-success h3 {
+            color: #00ff88;
+            margin-bottom: 10px;
+            font-size: 1.8em;
+        }
+
+        .form-success p {
+            color: #b0b0b0;
+            font-size: 1.1em;
+        }
+
+        /* Contact Info Cards */
+        .contact-info-cards {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .info-card {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(10px);
+            padding: 30px;
+            border-radius: 20px;
+            border: 2px solid rgba(0, 212, 255, 0.3);
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .info-card:hover {
+            border-color: #00d4ff;
+            box-shadow: 0 10px 30px rgba(0, 212, 255, 0.3);
+            transform: translateY(-5px);
+        }
+
+        .info-icon {
+            font-size: 3em;
+            margin-bottom: 15px;
+        }
+
+        .info-card h4 {
+            color: #00d4ff;
+            font-size: 1.3em;
+            margin-bottom: 10px;
+        }
+
+        .info-card p {
+            color: #b0b0b0;
+            font-size: 1em;
+            margin: 5px 0;
+        }
+
+        .social-links-small {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        .social-links-small a {
+            color: #00d4ff;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            padding: 8px;
+            border-radius: 8px;
+            background: rgba(0, 212, 255, 0.1);
+        }
+
+        .social-links-small a:hover {
+            background: rgba(0, 212, 255, 0.2);
+            transform: translateX(5px);
+        }
+
         footer {
             text-align: center;
             padding: 40px;
@@ -976,6 +1178,14 @@
                 width: 45px;
                 height: 45px;
             }
+
+            .contact-container {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-form-wrapper {
+                padding: 25px;
+            }
         }
     </style>
 </head>
@@ -1024,7 +1234,7 @@
             <div class="hero-left">
                 <div class="photo-card">
                     <div class="photo-inner">
-                        <div class="profile-photo">👩‍💻</div>
+                        <img src="profile_photo.png" alt="Mitali Brahmankar" class="profile-photo">
                         <div class="deco-circle deco1">💻</div>
                         <div class="deco-circle deco2">🚀</div>
                         <div class="deco-circle deco3">⚡</div>
@@ -1131,7 +1341,7 @@
                 <div class="project-card">
                     <h3>🐘 Elephant Detection System (SIH Project)</h3>
                     <p class="project-duration">March 2025 – May 2025</p>
-                    <div class="project-image-placeholder">🐘</div>
+                    <img src="elephant_detection.png" alt="Elephant Detection System" style="width: 100%; border-radius: 10px; margin: 15px 0;">
                     <p>A wildlife safety system designed to detect elephants in Chhattisgarh forests to prevent human-animal conflicts using real-time video analysis and YOLO object detection algorithm.</p>
                     <p style="margin-top: 10px;"><strong>Key Features:</strong> Real-time detection, automated alerts to authorities and villagers, wildlife conservation support.</p>
                     <span class="project-tech">Python | YOLO | AI | Computer Vision</span>
@@ -1140,7 +1350,7 @@
                 <div class="project-card">
                     <h3>🧪 AquaVeritas: Smart Water Bottle</h3>
                     <p class="project-duration">January 2025 – March 2025</p>
-                    <div class="project-image-placeholder">💧</div>
+                    <img src="aquaveritus.png" alt="AquaVeritas Smart Water Bottle" style="width: 100%; border-radius: 10px; margin: 15px 0;">
                     <p>IoT-enabled water bottle with TDS sensors for water quality detection, sterilization feature, and OLED ad-display system using Arduino Nano.</p>
                     <span class="project-tech">Arduino | IoT | TDS Sensor</span>
                 </div>
@@ -1148,7 +1358,7 @@
                 <div class="project-card">
                     <h3>🚦 Four-Way Traffic Control System</h3>
                     <p class="project-duration">April 2025</p>
-                    <div class="project-image-placeholder">🚦</div>
+                    <img src="traffic_control.png" alt="Traffic Control System" style="width: 100%; border-radius: 10px; margin: 15px 0;">
                     <p>Intelligent traffic management using MATLAB Simulink with image processing and optical flow for vehicle counting and adaptive signal timing.</p>
                     <span class="project-tech">MATLAB | Image Processing</span>
                 </div>
@@ -1156,7 +1366,7 @@
                 <div class="project-card">
                     <h3>🤖 Bluetooth Controlled Robot Car</h3>
                     <p class="project-duration">April 2025</p>
-                    <div class="project-image-placeholder">🚗</div>
+                    <img src="bluetooth_control_car.png" alt="Bluetooth Robot Car" style="width: 100%; border-radius: 10px; margin: 15px 0;">
                     <p>Mobile robot with wireless control via Bluetooth using HC-05 module, L298N motor driver, and Arduino Uno.</p>
                     <span class="project-tech">Arduino | Bluetooth | Embedded</span>
                 </div>
@@ -1215,7 +1425,7 @@
             <h2>🏆 Certifications & Achievements</h2>
             <div class="cert-grid">
                 <div class="cert-card">
-                    <div class="cert-image-placeholder">🥈</div>
+                    <img src="innovision_tech.png" alt="INNOVISION 2025 Certificate" style="width: 100%; border-radius: 10px; margin-bottom: 15px;">
                     <h3>🥈 INNOVISION 2025 Winner</h3>
                     <p><strong>1st Runner-up at Techathlon</strong></p>
                     <p>JSPM Group of Institutes</p>
@@ -1224,7 +1434,7 @@
                 </div>
 
                 <div class="cert-card">
-                    <div class="cert-image-placeholder">📜</div>
+                    <img src="simulink_fundamental.png" alt="Simulink Fundamentals Certificate" style="width: 100%; border-radius: 10px; margin-bottom: 15px;">
                     <h3>📜 Simulink Fundamentals</h3>
                     <p><strong>MathWorks Training Services</strong></p>
                     <p>100% Course Completion</p>
@@ -1232,7 +1442,7 @@
                 </div>
 
                 <div class="cert-card">
-                    <div class="cert-image-placeholder">⚙️</div>
+                    <img src="introduction_to_motor_control_matlab_course.png" alt="Motor Control Certificate" style="width: 100%; border-radius: 10px; margin-bottom: 15px;">
                     <h3>📜 Introduction to Motor Control</h3>
                     <p><strong>MathWorks Training Services</strong></p>
                     <p>100% Course Completion</p>
@@ -1240,7 +1450,7 @@
                 </div>
 
                 <div class="cert-card">
-                    <div class="cert-image-placeholder">💼</div>
+                    <img src="internship.png" alt="VLSI Internship Certificate" style="width: 100%; border-radius: 10px; margin-bottom: 15px;">
                     <h3>🏢 VLSI Internship Certificate</h3>
                     <p><strong>EdiGlobe</strong></p>
                     <p>Very Large Scale Integration</p>
@@ -1251,7 +1461,86 @@
 
         <section class="section" id="contact">
             <h2>📧 Contact Me</h2>
-            <div class="contact-info">
+            
+            <!-- Contact Form -->
+            <div class="contact-container">
+                <div class="contact-form-wrapper">
+                    <h3 style="color: #00d4ff; margin-bottom: 20px; font-size: 1.8em;">💬 Send Me a Message</h3>
+                    <form class="contact-form" id="contactForm">
+                        <div class="form-group">
+                            <label for="name">Your Name *</label>
+                            <input type="text" id="name" name="name" required placeholder="Enter your full name">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email">Your Email *</label>
+                            <input type="email" id="email" name="email" required placeholder="your.email@example.com">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="phone">Phone Number (Optional)</label>
+                            <input type="tel" id="phone" name="phone" placeholder="+91 1234567890">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="subject">Subject *</label>
+                            <select id="subject" name="subject" required>
+                                <option value="">Select a subject</option>
+                                <option value="collaboration">Project Collaboration</option>
+                                <option value="internship">Internship Opportunity</option>
+                                <option value="job">Job Opportunity</option>
+                                <option value="feedback">Feedback/Suggestion</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="message">Your Message *</label>
+                            <textarea id="message" name="message" rows="6" required placeholder="Write your message here..."></textarea>
+                        </div>
+                        
+                        <button type="submit" class="submit-btn">
+                            <span class="btn-text">Send Message</span>
+                            <span class="btn-icon">📨</span>
+                        </button>
+                    </form>
+                    
+                    <div class="form-success" id="successMessage">
+                        <div class="success-icon">✅</div>
+                        <h3>Message Sent Successfully!</h3>
+                        <p>Thank you for reaching out. I'll get back to you soon!</p>
+                    </div>
+                </div>
+                
+                <!-- Contact Info Cards -->
+                <div class="contact-info-cards">
+                    <div class="info-card">
+                        <div class="info-icon">📧</div>
+                        <h4>Email Me</h4>
+                        <p>mitali.brahmankar23@pccoepune.org</p>
+                        <p>mitalibrahmankar27@gmail.com</p>
+                    </div>
+                    
+                    <div class="info-card">
+                        <div class="info-icon">📍</div>
+                        <h4>Location</h4>
+                        <p>PCCOE, Pune</p>
+                        <p>Maharashtra, India</p>
+                    </div>
+                    
+                    <div class="info-card">
+                        <div class="info-icon">🌐</div>
+                        <h4>Connect Online</h4>
+                        <div class="social-links-small">
+                            <a href="https://github.com/mitalibrahmankar" target="_blank">💻 GitHub</a>
+                            <a href="https://linkedin.com/in/mitalibrahmankar" target="_blank">💼 LinkedIn</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Quick Contact Buttons -->
+            <div class="contact-info" style="margin-top: 40px;">
                 <a href="mailto:mitali.brahmankar23@pccoepune.org" class="contact-item">📧 College Email</a>
                 <a href="mailto:mitalibrahmankar27@gmail.com" class="contact-item">📧 Personal Email</a>
                 <a href="https://github.com/mitalibrahmankar" class="contact-item" target="_blank">💻 GitHub</a>
@@ -1412,6 +1701,45 @@
                     document.getElementById('navLinks').classList.remove('active');
                 }
             });
+        });
+
+        // Contact Form Submission
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form data
+            const formData = {
+                name: document.getElementById('name').value,
+                email: document.getElementById('email').value,
+                phone: document.getElementById('phone').value,
+                subject: document.getElementById('subject').value,
+                message: document.getElementById('message').value
+            };
+
+            // Store in memory (you can send this to a backend service)
+            console.log('Form submitted:', formData);
+            
+            // Create mailto link with form data
+            const mailtoLink = `mailto:mitali.brahmankar23@pccoepune.org?subject=${encodeURIComponent(formData.subject + ' - From ' + formData.name)}&body=${encodeURIComponent(
+                'Name: ' + formData.name + '\n' +
+                'Email: ' + formData.email + '\n' +
+                'Phone: ' + (formData.phone || 'Not provided') + '\n\n' +
+                'Message:\n' + formData.message
+            )}`;
+            
+            // Open default email client
+            window.location.href = mailtoLink;
+
+            // Show success message
+            document.querySelector('.contact-form').style.display = 'none';
+            document.getElementById('successMessage').classList.add('show');
+
+            // Reset form and hide success message after 5 seconds
+            setTimeout(() => {
+                document.getElementById('contactForm').reset();
+                document.querySelector('.contact-form').style.display = 'flex';
+                document.getElementById('successMessage').classList.remove('show');
+            }, 5000);
         });
     </script>
 </body>
